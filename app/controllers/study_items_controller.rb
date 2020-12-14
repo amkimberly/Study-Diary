@@ -4,24 +4,34 @@ class StudyItemsController < ApplicationController
     @study_items = StudyItem.all
   end
 
+  def show
+    @study_item = StudyItem.find(params[:id])
+  end
+
+  def search
+     @title = params[:title]
+     @study_items = StudyItem.where "title like ?", "%#{@title}%"
+  end
+
   def new
     @study_item = StudyItem.new
   end
 
-  def show
-    @study_item = StudyItem.find(params[:id])
+  def create
+    @study_item = StudyItem.new params.require(:study_item).permit :title, :description, :category
+    if @study_item.save
+      redirect_to root_path
+    else
+      render :new
+    end
+    flash[:notice] = "Item cadastrado com sucesso!" 
   end
-  
+
   def destroy
     @study_item = StudyItem.find(params[:id])
     @study_item.destroy
-    flash[:notice] = "Item removido!"
+    #varáveis de instância só duram uma requisição. Utilizar o flash para alertas.
+    flash[:notice] = "Item removido com sucesso!"
     redirect_to study_items_all_path
-  end
-
-  def create
-    @study_item = StudyItem.create params.require(:study_item).permit :title, :description, :category
-    flash[:notice] = "Item cadastrado!"
-    redirect_to root_path
   end
 end

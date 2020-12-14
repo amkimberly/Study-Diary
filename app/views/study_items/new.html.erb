@@ -1,3 +1,6 @@
+<% @study_item.errors.full_message.each do |message|%>
+    <div class="alert alert-danger" role="alert"><%= message %></div>
+<% end %>
 
 <%= form_for @study_item do |f| %>
  
