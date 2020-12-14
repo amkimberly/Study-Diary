@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <%= nav_bar brand: "Study Diary", brand_link: root_url  do %>
+      <%= form_tag study_items_search_path, class: "navbar-form" do %>
+        
+          <%= text_field_tag :nome, nil, class: "form-control" %>
+          <%= button_to "Pesquisar", nil, class: "btn btn-default" %>
+      
+      <% end %>
+    <% end %>
+    
+    <div class="container">
+    
     <%= yield %>
+    </div>
+
+   
+
   </body>
 </html>

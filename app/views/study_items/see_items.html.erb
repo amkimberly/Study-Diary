@@ -1,0 +1,35 @@
+
+<table class= "table table-bordered">
+<tbody>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Categoria</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+<tbody>
+  <% @study_items.each do |study_item| %>
+  <tr>
+    <td><%= link_to study_item.title, study_item %></td>
+
+    <td><%= study_item.category %></td>
+
+    <td><%= study_item.description %></td>
+
+    <td><%= button_to 'Remover', study_item, 
+        method: :delete, class: "btn btn-danger",
+        data: {confirm: "Tem certeza que deseja remover este item?"} %></td>
+
+    <td><%= button_to 'Editar', class: "btn btn-light" %></td>
+
+   </tr>   
+  <% end %>
+
+</tbody>
+</table>
+
+<br/><br/>
+
+ <%= link_to 'Cadastrar Novo Item', new_study_item_path %>
+ <%= link_to 'Voltar', root_path %>
