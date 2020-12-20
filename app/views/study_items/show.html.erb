@@ -1,12 +1,40 @@
 
-<h4><%= "Título: "%>
-<%= @study_item.title %></h4> 
+<p><h4><%= "Título: "%>
+<%= @study_item.title %></h4></p>
 
-<h5><%= "Categoria: "%> 
-<%= @study_item.category %></h5>
+<p><h5><%= "Categoria: "%> 
+<%= @study_item.category.nome%></h5></p>
 
-<h5><%= "Descrição: " %> 
-<%= @study_item.description %></h5>
+<p><h5><%= "Descrição: " %>
+<%= @study_item.description %></h5></p>
 
-<%= link_to 'Início', root_path %>
+<p><h5><%= "Comentários: " %>
+<%= @study_item.comment %></h5></p>
+
+<p><h5><%= "Prazo de conclusão: " %>
+<%= @study_item.deadline%></h5></p>
+
+<% if @study_item.finished? %>
+  <p><h5>Status: Concluído em <%= @study_item.finished_at.strftime('%d/%m/%y') %></h5></p>
+<% else %>
+  <div class= "d-grid gap2 d-md-flex justify-content-md-end">
+  <%= button_to 'Concluído✅', mark_as_done_study_item_path(@study_item),method: :post, 
+                                                              class: "btn btn-success" %>
+</div>  
+<% end %>
+
+
+
+</br></br>
+
+
+<%= link_to 'Comentar item', study_item_comment_path(@study_item), class:"btn btn-primary" %>
+
+
+<div class= "d-grid gap2 d-md-flex justify-content-md-end">
+    <%= link_to 'Voltar', study_items_all_path, class: "btn btn-primary" %>
+</div>
+
+
+
 

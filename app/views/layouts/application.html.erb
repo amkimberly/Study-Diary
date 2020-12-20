@@ -15,9 +15,11 @@
                               method: :get,
                               class: "navbar-form navbar-right" do %>
         <div class= "form-group">
-          <%= text_field_tag :title, @title , class: "form-control" %>
+        <div class= "d-grid gap2 d-md-flex justify-content-md-end">
+          <%= text_field_tag :title, @title, class: "form-control" %>
           <%= button_to "Pesquisar", nil, class: "btn btn-primary" %>
-        </div>    
+          </div>
+          </div>
       <% end %>
     <% end %>
     

@@ -1,0 +1,31 @@
+<% @study_item.errors.full_messages.each do |message|%>
+  <div class="alert alert-danger" role="alert"><%= message %></div>
+<% end %>
+
+<%= form_for @study_item do |f| %>
+
+  <%= f.label :title, 'Título' %><br/>
+  <%= f.text_field :title, class: "form-control" %><br/><br/>
+  <div>
+  <%= f.label :Descrição %><br/>
+  <%= f.text_area :description, class: "form-control", rows: 4 %><br/><br/>
+
+
+  <%= f.label :category_id, 'Categoria' %><br/>
+  <%= f.collection_select :category_id, @categorias, :id, :nome, {}, class: "form-control" %>
+  <%= link_to 'Nova categoria', new_categorium_path %>
+  <br/><br/>  
+  
+  <%= f.label 'Prazo de conclusão' %><br/>
+  <%= f.date_field :deadline%>
+  <br/><br/>
+
+  
+
+  <%= f.submit action_text, class: "btn btn-success" %>
+  <div class= "d-grid gap2 d-md-flex justify-content-md-end">
+  <%= link_to "Voltar", study_items_all_path, class:"btn btn-primary", data: {confirm: "Tem certeza que deseja voltar? 
+  Você perderá todas as alterações."} %>
+  </div>
+
+<% end %> 

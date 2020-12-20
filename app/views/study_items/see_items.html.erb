@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <div class= "alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
 <table class= "table table-bordered">
 <tbody>
@@ -6,30 +11,17 @@
       <th>Título</th>
       <th>Categoria</th>
       <th>Descrição</th>
+      <th>Status</th>
     </tr>
   </thead>
 <tbody>
-  <% @study_items.each do |study_item| %>
-  <tr>
-    <td><%= link_to study_item.title, study_item %></td>
-
-    <td><%= study_item.category %></td>
-
-    <td><%= study_item.description %></td>
-
-    <td><%= button_to 'Remover', study_item, 
-        method: :delete, class: "btn btn-danger",
-        data: {confirm: "Tem certeza que deseja remover este item?"} %></td>
-
-    <td><%= button_to 'Editar', class: "btn btn-primary" %></td>
-
-   </tr>   
-  <% end %>
-
+  <%= render partial: "study_item" %>
 </tbody>
 </table>
-
 <br/><br/>
-
- <%= link_to 'Cadastrar Novo Item', new_study_item_path %>
- <%= link_to 'Voltar', root_path %>
+<div>
+ <%= link_to 'Cadastrar Novo Item', new_study_item_path, class: "btn btn-success" %>
+ <div class= "d-grid gap2 d-md-flex justify-content-md-end">
+ <%= link_to 'Voltar', root_path, class: "btn btn-primary" %>
+ </div>
+ </div>

@@ -1,0 +1,24 @@
+<h4><%= "Título: "%>
+<%= @study_item.title %></h4> 
+
+<h5><%= "Categoria: "%> 
+<%= @study_item.category_id %></h5>
+
+<h5><%= "Descrição: " %> 
+<%= @study_item.description %></h5>
+</br></br>
+
+ 
+ <%= form_for @study_item do |f| %>
+
+  <%= f.label :Comentários %><br/>
+  <%= f.text_area :comment, class: "form-control", rows: 4 %><br/><br/> 
+
+  <%= f.submit "Inserir comentário ", class: "btn btn-success" %>
+  
+  <div class= "d-grid gap2 d-md-flex justify-content-md-end">
+  <%= link_to "Cancelar", study_items_all_path, class:"btn btn-danger", data: {confirm: "Tem certeza que deseja voltar? 
+  Você perderá todas as alterações."} %>
+
+<% end %> 
+

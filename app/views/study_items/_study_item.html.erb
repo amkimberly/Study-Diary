@@ -1,0 +1,19 @@
+<% @study_items.each do |study_item| %>
+  <tr>
+    <td><%= link_to study_item.title, study_item %></td>
+    <td><%= study_item.category.nome%></td>
+    <td><%= study_item.description %></td>
+    <% if study_item.finished? %>
+      <td><%= "Concluído"%></td>
+    <% else %>
+      <td><%= "Pendente"%></td>
+    <% end %>
+
+    <td><%= button_to 'Remover', study_item, 
+        method: :delete, class: "btn btn-danger",
+        data: {confirm: "Tem certeza que deseja remover este item?"} %></td>
+
+    <td><%= link_to 'Editar', edit_study_item_path(study_item), class: "btn btn-primary" %></td>
+  
+   </tr>   
+  <% end %>
