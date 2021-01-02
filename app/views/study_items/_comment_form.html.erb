@@ -1,0 +1,14 @@
+<%= form_with model[@study_item, @study_item.comments.build] do |f| %>
+ <p> 
+  <%= f.label :commenter %><br>
+  <%= f.text_field :commenter %>
+ </p>
+ <p>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %>
+ </p>
+
+<p>
+  <%= f.submit "Salvar", class:"btn btn-primary" %>
+</p>
+<% end %>

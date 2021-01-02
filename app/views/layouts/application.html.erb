@@ -11,21 +11,25 @@
 
   <body>
     <%= nav_bar brand: "Study Diary", brand_link: root_url  do %>
+      <%= menu_group do %>
+        <%= menu_item "Cadastrar Item", new_study_item_path%>
+        <%= menu_item "Ver todos os itens", study_items_all_path %>
+        <% end %>
       <%= form_tag study_items_search_path, 
                               method: :get,
                               class: "navbar-form navbar-right" do %>
         <div class= "form-group">
-        <div class= "d-grid gap2 d-md-flex justify-content-md-end">
-          <%= text_field_tag :title, @title, class: "form-control" %>
-          <%= button_to "Pesquisar", nil, class: "btn btn-primary" %>
+          <div class= "d-grid gap2 d-md-flex justify-content-md-end">
+            <%= text_field_tag :title, @title, class: "form-control" %>
+            <%= button_to "Pesquisar", nil, class: "btn btn-primary" %>
           </div>
-          </div>
+        </div>
       <% end %>
     <% end %>
     
     <div class="container">
     
-    <%= yield %>
+      <%= yield %>
     </div>
 
    

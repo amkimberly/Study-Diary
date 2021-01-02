@@ -1,5 +1,5 @@
 class StudyItemsController < ApplicationController
-  before_action :set_item, only: %i[show edit update destroy comment mark_as_done]
+  before_action :set_item, only: %i[show edit update destroy mark_as_done]
  
   def new
     @study_item = StudyItem.new
@@ -8,7 +8,7 @@ class StudyItemsController < ApplicationController
 
   def create
     @categorias = Categorium.all
-    @study_item = StudyItem.new (study_item_params)
+    @study_item = StudyItem.new(study_item_params)
     if @study_item.save
       redirect_to root_path
     else
@@ -68,6 +68,6 @@ class StudyItemsController < ApplicationController
   end
 
   def study_item_params
-    params.require(:study_item).permit (:title, :description, :category_id, :deadline, :comment)
+    params.require(:study_item).permit(:title, :description, :category_id, :deadline)
   end
 end
